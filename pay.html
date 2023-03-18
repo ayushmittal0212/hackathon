@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;
+    300;400;500;600;700;800&family=Poppins&family=Roboto:ital,wght@0,100;
+    0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"  -->
+    <!-- rel="stylesheet"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&family=Poppins&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="pay.css">
+</head>
+<body>
+    <h1 id="payh1">EVENTS</h1>
+
+        <div class="contentpay">
+
+            <form id="add-eve-form"></form>
+
+            <ul id="eve-list"></ul>
+
+        </div>
+        <script src="https://js.instamojo.com/v1/checkout.js"></script>
+        <script>
+            // Initialize Firebase
+            const firebaseConfig = {
+                apiKey: "AIzaSyDdfwddpIpFLdiNi-15xkMgTRp4eeznkKw",
+                authDomain: "hack-2bcde.firebaseapp.com",
+                databaseURL: "https://hack-2bcde-default-rtdb.firebaseio.com",
+                projectId: "hack-2bcde",
+                storageBucket: "hack-2bcde.appspot.com",
+                messagingSenderId: "243836919454",
+                appId: "1:243836919454:web:86f3515d2baf83bdd7a58f"
+              };
+            firebase.initializeApp(firebaseConfig);
+            const db = firebase.firestore();
+            db.settings({ timestampsInSnapshots: true }); 
+        </script>
+    <video src="background_video.mp4" autoplay muted loop id="payvideo"></video>
+    <script src="pay.js"></script>
+</body>
+</html>
