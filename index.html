@@ -352,6 +352,8 @@
     auth.onAuthStateChanged(function(user) {
         if (user) {
             // $state.go("tab.favorites");
+            alert("Loggin you in")
+            console.log("Ayush")
             const dbRef = ref(getDatabase());
                         get(child(dbRef, `users/${user.uid}`)).then((snapshot) => {
                             if (snapshot.exists()) {
