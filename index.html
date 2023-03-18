@@ -261,7 +261,7 @@
                 sint quos? Accusantium a fugiat porro reiciendis saepe quibusdam
                 debitis ducimus.
             </p>
-            <a class="btn-features" href="pay.html" target="_blank">Learn More</a>
+            <a class="btn-features" href="pay.html" target="_top">Learn More</a>
         </div>
 
         <div class="features__feature">
@@ -349,14 +349,58 @@
     const app = initializeApp(firebaseConfig);
     const database = getDatabase(app);
     const auth = getAuth();
+    auth.onAuthStateChanged(function(user) {
+        if (user) {
+            // $state.go("tab.favorites");
+            const dbRef = ref(getDatabase());
+                        get(child(dbRef, `users/${user.uid}`)).then((snapshot) => {
+                            if (snapshot.exists()) {
+                                const a = snapshot.val();
+                                document.getElementById("name").innerHTML = a.fullname;
+                                document.getElementById("lemail").innerHTML = a.email;
+                                document.getElementById("lcourse").innerHTML = a.course;
+                                document.getElementById("lyear").innerHTML = a.year;
+                                document.getElementById("username").innerHTML = a.username;
 
+                                var bar = document.getElementById('bar');
+
+                                var fom = document.getElementById('form');
+                                fom.style.display = "none";
+                                bar.style.display = "block";
+                                var vikas = document.getElementById('vikas');
+                                vikas.style.display = "grid";
+                                body.style.justifycontent = "none";
+                                document.getElementById("body").style.display = "inline";
+                                document.getElementById("body").style.backgroundImage
+                                    = "none";
+
+
+
+
+
+                            } else {
+                                console.log("No data available");
+                            }
+                        }).catch((error) => {
+                            console.error(error);
+                        });
+
+
+                    }
+            // console.log("Hlo")
+    // User is signed in.
+        else {
+    // No user is signed in.
+            console.log("Bye")
+                }
+});
 
     login.addEventListener('click', (e) => {
 
         var email = document.getElementById('email').value;
         var password = document.getElementById('password').value;
 
-
+        
         if (email.endsWith("@gla.ac.in") || email == "eventbeepgla@gmail.com") {
             signInWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
